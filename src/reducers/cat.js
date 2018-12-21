@@ -14,33 +14,49 @@ const intitialState = {
 };
 
 export default function catsReducer(state = intitialState, action) {
-  if(action.type === FETCH_CAT_REQUEST || action.type === ADOPT_CAT_REQUEST) {
+  if(action.type === FETCH_CAT_REQUEST ) {
     return {
       ...state,
       loading: true,
       error: null
     }
-  } else if(action.type === FETCH_CAT_SUCCESS) {
+  }
+  if(action.type === ADOPT_CAT_REQUEST) {
+    return {
+      ...state,
+      loading: true,
+      error: null
+    }
+  }
+  if(action.type === FETCH_CAT_SUCCESS) {
     return {
     ...state, 
     loading: false,
     error: null,
     pet: action.data
   }
-  } else if (action.type === ADOPT_CAT_SUCCESS) {
+  } if (action.type === ADOPT_CAT_SUCCESS) {
     return {
       ...state,
       loading: true,
       error: null,
+      pet: null,
     }
   }
-  else if(action.type === FETCH_CAT_ERROR || action.type === ADOPT_CAT_ERROR) {
+  if(action.type === FETCH_CAT_ERROR) {
     return {
       ...state,
       loading: false,
-      error: action.error
+      error: action.error,
     }
-  } else {
+  } 
+  if (action.type === ADOPT_CAT_ERROR) {
+   return {
+     ...state,
+     error: action.error
+   } 
+  }
+  else {
     return state;
   }
 }

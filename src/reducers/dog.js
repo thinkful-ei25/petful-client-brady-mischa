@@ -13,34 +13,53 @@ const intitialState = {
   pet: null
 };
 
+
 export default function dogsReducer(state = intitialState, action) {
-  if (action.type === FETCH_DOG_REQUEST || action.type === ADOPT_DOG_REQUEST) {
+  if (action.type === FETCH_DOG_REQUEST) {
     return {
       ...state,
       loading: true,
       error: null
     }
-  } else if (action.type === FETCH_DOG_SUCCESS) {
+  }
+  if (action.type === ADOPT_DOG_REQUEST) {
+    return {
+      ...state,
+      loading: true,
+      error: null
+    }
+  }
+  if (action.type === FETCH_DOG_SUCCESS) {
     return {
       ...state,
       loading: false,
       error: null,
       pet: action.data
     }
-  } else if (action.type === ADOPT_DOG_SUCCESS) {
-    return {
-      ...state, 
-      loading: true,
-      error: null,
-    }
-  }
-  else if (action.type === FETCH_DOG_ERROR || action.type === ADOPT_DOG_ERROR) {
+  } if (action.type === ADOPT_DOG_SUCCESS) {
     return {
       ...state,
-      loading: false,
+      loading: true,
+      error: null,
+      pet: null,
+    }
+  }
+  if (action.type === FETCH_DOG_ERROR) {
+    return {
+      ...state,
+      loading: true,
+      error: action.error,
+    }
+  }
+  if (action.type === ADOPT_DOG_ERROR) {
+    return {
+      ...state,
       error: action.error
     }
-  } else {
+  }
+  else {
     return state;
   }
 }
+
+

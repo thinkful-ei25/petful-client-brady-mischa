@@ -21,7 +21,7 @@ export const fetchCatError = error => ({
 export const fetchCat = () => {
   return (dispatch) => {
   dispatch(fetchCatRequest());
-  /* return */ fetch(`${API_BASE_URL}/pets/cats`, {
+  fetch(`${API_BASE_URL}/pets/cats`, {
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json'
