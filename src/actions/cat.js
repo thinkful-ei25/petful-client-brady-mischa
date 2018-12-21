@@ -2,9 +2,9 @@
 import { API_BASE_URL } from '../config';
 
 export const FETCH_CAT_SUCCESS = 'FETCH_CAT_SUCCESS';
-export const fetchCatSuccess = results => ({
+export const fetchCatSuccess = data => ({
   type: FETCH_CAT_SUCCESS,
-  results
+  data
 });
 
 export const FETCH_CAT_REQUEST = 'FETCH_CAT_REQUEST';
@@ -18,32 +18,29 @@ export const fetchCatError = error => ({
   error
 });
 
-export const fetchCat = () => {
-  return dispatch => {
-    console.log('Dispatching fetchCatRequest');
-    dispatch(fetchCatRequest());
-    console.log('Fetching api');
-    fetch(`${API_BASE_URL}/pets/cats`, {
+export const fetchCat = (dispatch) => {
+  console.log('Dispatching fetchCatRequest');
+  dispatch(fetchCatRequest());
+  return fetch(`${API_BASE_URL}/pets/cats`, {
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json'
       }
     })
       .then(res => res.json())
-      .then(results => {
+      .then(pet => {
         console.log(
-          'This is the cats get request result ==>  ' + JSON.stringify(results)
+          'This is the cats get request result ==>  ' + JSON.stringify(pet)
         );
-        dispatch(fetchCatSuccess(results));
+        dispatch(fetchCatSuccess(pet));
       })
       .catch(error => dispatch(fetchCatError(error)));
   };
-};
+
 
 export const ADOPT_CAT_SUCCESS = 'ADOPT_CAT_SUCCESS';
-export const adoptCatSuccess = results => ({
+export const adoptCatSuccess = () => ({
   type: ADOPT_CAT_SUCCESS,
-  results
 });
 
 export const ADOPT_CAT_REQUEST = 'ADOPT_CAT_REQUEST';
@@ -57,15 +54,13 @@ export const adoptCatError = error => ({
   error
 });
 
-export const adoptCat = () => {
-  return dispatch => {
-    console.log('Dispatching adoptCatRequest');
-    dispatch(adoptCatRequest());
-    fetch(`${API_BASE_URL}/pets/cats`, {
+export const adoptCat = (dispatch) => {
+  console.log('Dispatching adoptCatRequest');
+  dispatch(adoptCatRequest());
+  return fetch(`${API_BASE_URL}/pets/cats`, {
       method: 'DELETE',
     })
-    .then(res => res.json())
+    .then(()=> dispatch(adoptCatSuccess()))
     .then(dispatch(fetchCat()))
     .catch(error => dispatch(adoptCatError(error)));
   };
-};

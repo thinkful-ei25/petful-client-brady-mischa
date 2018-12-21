@@ -4,9 +4,9 @@ import { API_BASE_URL } from '../config';
 
 
 export const FETCH_DOG_SUCCESS = 'FETCH_DOG_SUCCESS';
-export const fetchDogSuccess = results => ({
+export const fetchDogSuccess = data => ({
   type: FETCH_DOG_SUCCESS,
-  results
+  data
 });
 
 export const FETCH_DOG_REQUEST = 'FETCH_DOG_REQUEST';
@@ -20,32 +20,30 @@ export const fetchDogError = error => ({
   error
 });
 
-export const fetchDog = () => {
-  return dispatch => {
-    console.log('Dispatching fetchDogRequest');
-    dispatch(fetchDogRequest());
-    console.log('Fetching api');
-    fetch(`${API_BASE_URL}/pets/Dogs`, {
+export const fetchDog = (dispatch) => {
+  console.log('Dispatching fetchDogRequest');
+  dispatch(fetchDogRequest());
+  return fetch(`${API_BASE_URL}/pets/Dogs`, {
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json'
       }
     })
       .then(res => res.json())
-      .then(results => {
+      .then(pet => {
         console.log(
-          'This is the Dogs get request result ==>  ' + JSON.stringify(results)
+          'This is the Dogs get request result ==>  ' + JSON.stringify(pet)
         );
-        dispatch(fetchDogSuccess(results));
+        dispatch(fetchDogSuccess(pet));
       })
       .catch(error => dispatch(fetchDogError(error)));
   };
-};
+
 
 export const ADOPT_DOG_SUCCESS = 'ADOPT_DOG_SUCCESS';
-export const adoptDogSuccess = results => ({
+export const adoptDogSuccess = () => ({
   type: ADOPT_DOG_SUCCESS,
-  results
+
 });
 
 export const ADOPT_DOG_REQUEST = 'ADOPT_DOG_REQUEST';
@@ -59,15 +57,14 @@ export const adoptDogError = error => ({
   error
 });
 
-export const adoptDog = () => {
-  return dispatch => {
-    console.log('Dispatching adoptDogRequest');
-    dispatch(adoptDogRequest());
-    fetch(`${API_BASE_URL}/pets/Dogs`, {
+export const adoptDog = (dispatch) => {
+  console.log('Dispatching adoptDogRequest');
+  dispatch(adoptDogRequest());
+  return fetch(`${API_BASE_URL}/pets/Dogs`, {
       method: 'DELETE',
     })
-      .then(res => res.json())
+      .then(()=>dispatch(adoptDogSuccess()))
       .then(dispatch(fetchDog()))
-      .catch(error => dispatch(adoptDogError(error)));
+      .catch(error => dispatch(adoptDogError(error)))
   };
-};
+
