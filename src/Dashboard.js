@@ -18,8 +18,8 @@ export class Dashboard extends Component {
     console.log('props cat: ', this.props.cat)
     return (
       <Fragment>
-        <Pet petToAdopt={this.props.cat} onAdoptPet={this.adopt}/>
-        <Pet petToAdopt={this.props.dog} onAdoptPet={this.adopt}/>
+        <Pet type={'Cat'} petToAdopt={this.props.cat} onAdoptPet={this.adopt}/>
+        <Pet type={'Dog'} petToAdopt={this.props.dog} onAdoptPet={this.adopt}/>
       </Fragment>
     )
   }
