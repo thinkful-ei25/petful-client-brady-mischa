@@ -5,7 +5,7 @@ import {
   ADOPT_CAT_REQUEST,
   ADOPT_CAT_SUCCESS,
   ADOPT_CAT_ERROR
-} from '..actions';
+} from '../actions';
 
 const intitialState = {
   loading: false,
