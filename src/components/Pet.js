@@ -20,13 +20,3 @@ export default function Pet (props) {
       </section>
     )
 }
-
-{/* 
-// <section id="dogToAdopt">
-//   <h3>Shnuffles</h3>
-//   <img style={imgStyles} src="https://s.hdnux.com/photos/62/05/55/13130569/9/920x920.jpg" />
-//   <dl>
-//     <dt className="animal-details">About me</dt>
-//     <dd>Am I a dog?</dd>
-//   </dl>
-// </section> */}

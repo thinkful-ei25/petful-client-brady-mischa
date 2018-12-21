@@ -25,7 +25,7 @@ export class Dashboard extends Component {
   }
   render(){
     if(this.props.cat.loading || this.props.dog.loading){
-      return <h2>finding your purrrrfect pet</h2>
+      return <h2>Finding your purrrrfect pet</h2>
     }else{
       return this.rerender();
     }

@@ -20,9 +20,6 @@ export const fetchCatError = error => ({
 
 export const fetchCat = () => {
   return (dispatch) => {
-
-  
-  console.log('Dispatching fetchCatRequest');
   dispatch(fetchCatRequest());
   /* return */ fetch(`${API_BASE_URL}/pets/cats`, {
       headers: {
@@ -32,9 +29,6 @@ export const fetchCat = () => {
     })
       .then(res => res.json())
       .then(pet => {
-        console.log(
-          'This is the cats get request result ==>  ' + JSON.stringify(pet)
-        );
         dispatch(fetchCatSuccess(pet));
       })
       .catch(error => dispatch(fetchCatError(error)));
