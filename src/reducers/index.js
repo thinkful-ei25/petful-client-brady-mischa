@@ -1,7 +1,7 @@
 import {combineReducers} from 'redux';
-import catReducer from './cat';
-import dogReducer from './dog';
+import cat from './cat';
+import dog from './dog';
 
 export default combineReducers({
-  catReducer, dogReducer
+  cat, dog
 });

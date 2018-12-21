@@ -1,9 +1,8 @@
-import {createStore, applyMiddleware, combineReducers} from 'redux';
-import {catReducer, dogReducer} from './reducers/index.js';
+import {createStore, applyMiddleware} from 'redux';
 import thunk from 'redux-thunk';
+import rootReducer from './reducers'; 
 
 
-export const store = createStore(combineReducers({
-  cat: catReducer,
-  dog: dogReducer
-}), applyMiddleware(thunk));
+const store = createStore(rootReducer, applyMiddleware(thunk));
+
+export default store;
