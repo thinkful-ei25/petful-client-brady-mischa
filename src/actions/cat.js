@@ -18,10 +18,13 @@ export const fetchCatError = error => ({
   error
 });
 
-export const fetchCat = (dispatch) => {
+export const fetchCat = () => {
+  return (dispatch) => {
+
+  
   console.log('Dispatching fetchCatRequest');
   dispatch(fetchCatRequest());
-  return fetch(`${API_BASE_URL}/pets/cats`, {
+  /* return */ fetch(`${API_BASE_URL}/pets/cats`, {
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json'
@@ -35,7 +38,8 @@ export const fetchCat = (dispatch) => {
         dispatch(fetchCatSuccess(pet));
       })
       .catch(error => dispatch(fetchCatError(error)));
-  };
+  }
+};
 
 
 export const ADOPT_CAT_SUCCESS = 'ADOPT_CAT_SUCCESS';

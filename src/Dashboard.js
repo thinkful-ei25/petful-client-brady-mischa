@@ -5,8 +5,8 @@ import {fetchCat, fetchDog, adoptCat, adoptDog} from './actions';
 
 export class Dashboard extends Component {
   componentDidMount(){
-    this.props.dispatch(fetchCat(this.props.dispatch));
-    this.props.dispatch(fetchDog(this.props.dispatch));
+    this.props.dispatch(fetchCat());
+    this.props.dispatch(fetchDog());
   }
 
   adopt = (e) => {
