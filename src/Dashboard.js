@@ -14,7 +14,8 @@ export class Dashboard extends Component {
 
     console.log('clicked!')
   }
-  render() {
+  rerender() {
+    console.log('props cat: ', this.props.cat)
     return (
       <Fragment>
         <Pet petToAdopt={this.props.cat} onAdoptPet={this.adopt}/>
@@ -22,9 +23,16 @@ export class Dashboard extends Component {
       </Fragment>
     )
   }
+  render(){
+    if(this.props.cat.loading || this.props.dog.loading){
+      return <h2>finding your purrrrfect pet</h2>
+    }else{
+      return this.rerender();
+    }
+  }
 }
 const mapStateToProps = (state) => {
-  console.log(state);
+  console.log(state.cat.loading);
   return({
     cat: state.cat,
     dog: state.dog

@@ -1,24 +1,23 @@
 import React, { Component, Fragment } from 'react';
 const imgStyles = { height: "200px" }
-export default class Dashboard extends Component {
-  render() {
+export default function Pet (props) {
+    // console.log('props in pet.js', props)
     return (
-      <section id={this.props.petToAdopt.name + '-' + this.props.petToAdopt.age}>
+      <section id={props.petToAdopt.name + '-' + props.petToAdopt.age}>
         <header>
-          <h3 className="pet-name">{this.props.petToAdopt.name}</h3>
+          <h3 className="pet-name">{props.petToAdopt.pet.name}</h3>
           
         </header>
           <dl>
             <dt className="animal-details">About me</dt>
-            <dd>I'm a {this.props.petType}</dd>
+            <dd>I'm a {props.petType}</dd>
           </dl>
-          <button id={this.props.petType + '-btn'} onClick={(e)=> this.props.onAdoptPet(e)}>Adopt</button>
+          <button id={props.petType + '-btn'} onClick={(e)=> props.onAdoptPet(e)}>Adopt</button>
       </section>
     )
-  }
 }
 
-
+{/* 
 // <section id="dogToAdopt">
 //   <h3>Shnuffles</h3>
 //   <img style={imgStyles} src="https://s.hdnux.com/photos/62/05/55/13130569/9/920x920.jpg" />
@@ -26,4 +25,4 @@ export default class Dashboard extends Component {
 //     <dt className="animal-details">About me</dt>
 //     <dd>Am I a dog?</dd>
 //   </dl>
-// </section>
+// </section> */}

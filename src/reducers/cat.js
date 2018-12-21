@@ -8,9 +8,9 @@ import {
 } from '../actions';
 
 const intitialState = {
-  loading: false,
+  loading: true,
   error: null,
-  cat: null
+  pet: null
 };
 
 export default function catsReducer(state = intitialState, action) {

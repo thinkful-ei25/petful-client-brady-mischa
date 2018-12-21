@@ -8,9 +8,9 @@ import {
 } from '../actions';
 
 const intitialState = {
-  loading: false,
+  loading: true,
   error: null,
-  dog: null
+  pet: null
 };
 
 export default function dogsReducer(state = intitialState, action) {

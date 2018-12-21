@@ -27,7 +27,7 @@ export const fetchDog = () => {
 
   console.log('Dispatching fetchDogRequest');
   dispatch(fetchDogRequest());
-  /* return */ fetch(`${API_BASE_URL}/pets/Dogs`, {
+  /* return */ fetch(`${API_BASE_URL}/pets/dogs`, {
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json'
@@ -65,7 +65,7 @@ export const adoptDogError = error => ({
 export const adoptDog = (dispatch) => {
   console.log('Dispatching adoptDogRequest');
   dispatch(adoptDogRequest());
-  return fetch(`${API_BASE_URL}/pets/Dogs`, {
+  return fetch(`${API_BASE_URL}/pets/dogs`, {
       method: 'DELETE',
     })
       .then(()=>dispatch(adoptDogSuccess()))
