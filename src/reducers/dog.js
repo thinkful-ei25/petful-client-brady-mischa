@@ -10,7 +10,7 @@ import {
 const intitialState = {
   loading: false,
   error: null,
-  pet: null
+  dog: null
 };
 
 export default function dogsReducer(state = intitialState, action) {

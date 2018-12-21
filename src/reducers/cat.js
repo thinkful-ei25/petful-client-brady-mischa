@@ -10,7 +10,7 @@ import {
 const intitialState = {
   loading: false,
   error: null,
-  pet: null
+  cat: null
 };
 
 export default function catsReducer(state = intitialState, action) {
