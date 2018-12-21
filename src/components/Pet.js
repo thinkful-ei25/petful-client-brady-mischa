@@ -3,10 +3,10 @@ const imgStyles = { height: "200px" }
 export default class Dashboard extends Component {
   render() {
     return (
-      <section id={this.props.petType + "ToAdopt"}>
+      <section id={this.props.petToAdopt.name + '-' + this.props.petToAdopt.age}>
         <header>
-          <h3>Scruffles</h3>
-          <img style={imgStyles} src="https://images.pexels.com/photos/209037/pexels-photo-209037.jpeg" alt="picture of scruffles" />
+          <h3 className="pet-name">{this.props.petToAdopt.name}</h3>
+          
         </header>
           <dl>
             <dt className="animal-details">About me</dt>
