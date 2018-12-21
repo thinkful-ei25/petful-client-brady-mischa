@@ -3,6 +3,7 @@ import Pet from './components/Pet';
 import {connect} from 'react-redux';
 import {fetchCat, fetchDog, adoptCat, adoptDog} from './actions';
 
+
 export class Dashboard extends Component {
   componentDidMount(){
     this.props.dispatch(fetchCat());
@@ -10,16 +11,16 @@ export class Dashboard extends Component {
   }
 
   adopt = (e) => {
-    console.log(e.target);
-
-    console.log('clicked!')
+    return e.target.id === 'cat-btn' ? this.props.dispatch(adoptCat()) : this.props.dispatch(adoptDog());
   }
   rerender() {
     console.log('props cat: ', this.props.cat)
     return (
       <Fragment>
-        <Pet type={'Cat'} petToAdopt={this.props.cat} onAdoptPet={this.adopt}/>
-        <Pet type={'Dog'} petToAdopt={this.props.dog} onAdoptPet={this.adopt}/>
+        <h2>Cat</h2>
+        <Pet type={'cat'} petToAdopt={this.props.cat} onAdoptPet={this.adopt}/>
+        <h2>Dog</h2>
+        <Pet type={'dog'} petToAdopt={this.props.dog} onAdoptPet={this.adopt}/>
       </Fragment>
     )
   }
@@ -32,7 +33,6 @@ export class Dashboard extends Component {
   }
 }
 const mapStateToProps = (state) => {
-  console.log(state.cat.loading);
   return({
     cat: state.cat,
     dog: state.dog

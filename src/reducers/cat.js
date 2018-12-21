@@ -20,13 +20,21 @@ export default function catsReducer(state = intitialState, action) {
       loading: true,
       error: null
     }
-  } else if(action.type === FETCH_CAT_SUCCESS || action.type === ADOPT_CAT_SUCCESS) {
+  } else if(action.type === FETCH_CAT_SUCCESS) {
     return {
     ...state, 
     loading: false,
     error: null,
-    pet: action.data}
-  } else if(action.type === FETCH_CAT_ERROR || action.type === ADOPT_CAT_ERROR) {
+    pet: action.data
+  }
+  } else if (action.type === ADOPT_CAT_SUCCESS) {
+    return {
+      ...state,
+      loading: true,
+      error: null,
+    }
+  }
+  else if(action.type === FETCH_CAT_ERROR || action.type === ADOPT_CAT_ERROR) {
     return {
       ...state,
       loading: false,

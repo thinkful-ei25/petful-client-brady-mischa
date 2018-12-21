@@ -52,13 +52,14 @@ export const adoptCatError = error => ({
   error
 });
 
-export const adoptCat = (dispatch) => {
-  console.log('Dispatching adoptCatRequest');
+export const adoptCat = () => {
+  return (dispatch) => {
   dispatch(adoptCatRequest());
-  return fetch(`${API_BASE_URL}/pets/cats`, {
+  fetch(`${API_BASE_URL}/pets/cats`, {
       method: 'DELETE',
     })
     .then(()=> dispatch(adoptCatSuccess()))
     .then(dispatch(fetchCat()))
     .catch(error => dispatch(adoptCatError(error)));
-  };
+  }
+};

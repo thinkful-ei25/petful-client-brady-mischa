@@ -31,9 +31,6 @@ export const fetchDog = () => {
     })
       .then(res => res.json())
       .then(pet => {
-        console.log(
-          'This is the Dogs get request result ==>  ' + JSON.stringify(pet)
-        );
         dispatch(fetchDogSuccess(pet));
       })
       .catch(error => dispatch(fetchDogError(error)));

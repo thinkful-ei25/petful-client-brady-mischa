@@ -20,14 +20,21 @@ export default function dogsReducer(state = intitialState, action) {
       loading: true,
       error: null
     }
-  } else if (action.type === FETCH_DOG_SUCCESS || action.type === ADOPT_DOG_SUCCESS) {
+  } else if (action.type === FETCH_DOG_SUCCESS) {
     return {
       ...state,
       loading: false,
       error: null,
       pet: action.data
     }
-  } else if (action.type === FETCH_DOG_ERROR || action.type === ADOPT_DOG_ERROR) {
+  } else if (action.type === ADOPT_DOG_SUCCESS) {
+    return {
+      ...state, 
+      loading: true,
+      error: null,
+    }
+  }
+  else if (action.type === FETCH_DOG_ERROR || action.type === ADOPT_DOG_ERROR) {
     return {
       ...state,
       loading: false,
