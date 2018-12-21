@@ -3,8 +3,9 @@
 import { API_BASE_URL } from '../config';
 
 export const FETCH_DOG_SUCCESS = 'FETCH_DOG_SUCCESS';
-export const fetchDogSuccess = () => ({
-  type: FETCH_DOG_SUCCESS
+export const fetchDogSuccess = (results) => ({
+  type: FETCH_DOG_SUCCESS,
+  results
 });
 
 export const FETCH_DOG_REQUEST = 'FETCH_DOG_REQUEST';
@@ -13,7 +14,7 @@ export const fetchDogRequest = () => ({
 });
 
 export const FETCH_DOG_ERROR = 'FETCH_DOG_ERROR';
-export const fetchDogError = () => ({
+export const fetchDogError = (error) => ({
   type: FETCH_DOG_ERROR,
   error
 });
