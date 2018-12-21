@@ -18,8 +18,10 @@ export class Dashboard extends Component {
     return (
       <Fragment>
         <h2>Cat</h2>
+        <hr />
         <Pet type={'cat'} petToAdopt={this.props.cat} onAdoptPet={this.adopt}/>
         <h2>Dog</h2>
+        <hr />
         <Pet type={'dog'} petToAdopt={this.props.dog} onAdoptPet={this.adopt}/>
       </Fragment>
     )
