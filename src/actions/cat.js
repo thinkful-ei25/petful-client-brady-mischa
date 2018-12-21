@@ -3,8 +3,9 @@
 import { API_BASE_URL } from '../config';
 
 export const  FETCH_CAT_SUCCESS = 'FETCH_CAT_SUCCESS';
-export const fetchCatSuccess = () => ({
-  type: FETCH_CAT_SUCCESS
+export const fetchCatSuccess = (results) => ({
+  type: FETCH_CAT_SUCCESS,
+  results
 });
 
 export const FETCH_CAT_REQUEST = 'FETCH_CAT_REQUEST';
@@ -13,7 +14,7 @@ export const fetchCatRequest = () => ({
 });
 
 export const FETCH_CAT_ERROR = 'FETCH_CAT_ERROR';
-export const fetchCatError = () => ({
+export const fetchCatError = (error) => ({
   type: FETCH_CAT_ERROR,
   error
 });
@@ -37,3 +38,21 @@ export const fetchCat = () => {
       .catch(error => dispatch(fetchCatError(error)))
     }
 }
+
+
+export const DELETE_CAT_SUCCESS = 'DELETE_CAT_SUCCESS'
+export const deleteCatSuccess = (results) => ({
+  type: DELETE_CAT_SUCCESS,
+  results
+});
+
+export const DELETE_CAT_REQUEST = 'DELETE_CAT_REQUEST';
+export const deleteCatRequest = () => ({
+  type: DELETE_CAT_REQUEST
+});
+
+export const DELETE_CAT_ERROR = 'DELETE_CAT_ERROR';
+export const deleteCatError = (error) => ({
+  type: DELETE_CAT_ERROR,
+  error
+});
