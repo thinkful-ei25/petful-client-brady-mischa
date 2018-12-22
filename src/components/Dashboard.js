@@ -12,14 +12,6 @@ export class Dashboard extends Component {
   render() {
     return (
       <Fragment>
-        <h2>Adopt a Friendly Cat</h2>
-        <Pet
-          className="adopt-pet"
-          type="cat"
-          petToAdopt={this.props.cat}
-          onAdopt={this.props.onAdoptCat}
-          loading={this.props.isCatLoading}
-        />
         <h2>Checkout Our Dogs!</h2>
         <Pet
           className="adopt-pet"
@@ -27,6 +19,14 @@ export class Dashboard extends Component {
           petToAdopt={this.props.dog}
           onAdopt={this.props.onAdoptDog}
           loading={this.props.isDogLoading}
+        />
+        <h2>Adopt a Friendly Cat</h2>
+        <Pet
+          className="adopt-pet"
+          type="cat"
+          petToAdopt={this.props.cat}
+          onAdopt={this.props.onAdoptCat}
+          loading={this.props.isCatLoading}
         />
       </Fragment>
     );
@@ -45,8 +45,7 @@ const mapStateToProps = state => ({
     isCatLoading: state.cat.loading,
     dog: state.dog.pet,
     cat: state.cat.pet,
-    isDogError: state.dog.error,
-    isCatEror: state.cat.error,
+
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

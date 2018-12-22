@@ -8,7 +8,7 @@ import {
 } from '../actions';
 
 const intitialState = {
-  loading: true,
+  loading: false,
   error: null,
   pet: null
 };
@@ -46,15 +46,15 @@ export default function catsReducer(state = intitialState, action) {
   if(action.type === FETCH_CAT_ERROR) {
     return {
       ...state,
-      loading: false,
+      loading: true,
       error: action.error,
     }
   } 
   if (action.type === ADOPT_CAT_ERROR) {
-   return {
-     ...state,
-     error: action.error
-   } 
+    return {
+      ...state,
+      error: action.error
+    } 
   }
   else {
     return state;
