@@ -21,7 +21,9 @@ export default function Pet(props) {
     }
   };
 
-  const displayPet = props.petToAdopt ? (
+  // const isLoading 
+
+  const displayPet = (props.petToAdopt && !props.loading) ? (
     <div className="card withShadow leaderBoardCard">
       <header>
         <h3 className="section-title">
