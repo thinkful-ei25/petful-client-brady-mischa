@@ -1,67 +1,74 @@
-import React, { Component, Fragment } from 'react';
-import { fetchCat, fetchDog, adoptCat, adoptDog } from '../actions';
-import { connect } from 'react-redux';
-const imgStyles = { height: "200px" }
+import React from 'react';
+const imgStyles = { height: '200px' };
 
+export default function Pet(props) {
+  let displayPet;
 
-export class Pets extends Component {
-  componentDidMount() {
-      this.props.dispatch(fetchCat());
-      this.props.dispatch(fetchDog());
-    
-  }
+  const options = {
+    dog: {
+      greeting: 'Howdy! My name is ',
+      allGoneImage:
+        'https://www.rover.com/blog/wp-content/uploads/2015/06/happy-dog.jpg'
+    },
+    cat: {
+      greeting: 'Hey There! My name is ',
+      allGoneImage:
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhFFYpB2rUY4u91QXpUqQPodZ5K4NWge6GHOlRLqqMJzybHAi2'
+    }
+  };
 
-  adopt = (e) => {
-    return e.target.id === 'cat-btn' ? this.props.dispatch(adoptCat()) : this.props.dispatch(adoptDog());
-  }
-
-  createCol() {
-    if(this.props.types !== null & !this.props.loading) {
-      return this.props.types.map((val, index) => {
-        let lowercase = val.toLowerCase();
-        return (
-        <div className='col-6' id={this.props[lowercase].pet.name + '-' + this.props[lowercase].pet.age + '-' + index} >
-        <h2>Adopt a {val} Today!</h2>
+  if (props.petToAdopt) {
+    displayPet = (
+      <section className="pet">
         <header>
-          <h3 className='pet-name'>Hi! I'm {this.props[lowercase].pet.name}!</h3>
+          <h3 className="pet-name">
+            {options[props.type].greeting}
+            {props.petToAdopt.name}!
+          </h3>
         </header>
-        <img style={imgStyles} src={this.props[lowercase].pet.imageURL} alt={this.props[lowercase].imageDescription} />
-            <dl>
-              <dt className="animal-details">About me</dt>
-              <dd className="details">I'm a {this.props[lowercase].pet.age} Year Old, {this.props[lowercase].pet.sex}, {this.props[lowercase].pet.breed}</dd>
-              <dd className="story">{this.props[lowercase].pet.story}</dd>
-            </dl>
-            <button id={lowercase + '-btn'} onClick={(e) => this.adopt(e)}>Adopt</button>
-        </div>
-      )
-      })
-    }
-  }
-
-  rerender() {
-    return(
-      <section>
-      {this.createCol()}
+        <img
+          style={imgStyles}
+          src={props.petToAdopt.imageURL}
+          alt={props.petToAdopt.imageDescription}
+        />
+        <dl>
+          <dt className="animal-details">Facts About Me</dt>
+          <dd className="details">
+            <span>Breed: </span> {props.petToAdopt.breed}
+          </dd>
+          <dd className="details">
+            <span>Age: </span> {props.petToAdopt.age} years old
+          </dd>
+          <dd className="details">
+            <span>Sex: </span> {props.petToAdopt.sex} 
+          </dd>
+          <dd className="details">
+            <span>My Story: </span> {props.petToAdopt.story} 
+          </dd>
+        </dl>
+        <button type="button" id={props.type + '-btn'} onClick={props.onAdopt}>
+          Adopt
+        </button>
       </section>
-    )
+    );
+  } else {
+    displayPet = (
+      <aside className="no-pet">
+        <header>
+          <h2 className="pet-name">All {props.type}s Have Found a Home!</h2>
+        </header>
+        <img
+          style={imgStyles}
+          src={options[props.type].allGoneImage}
+          alt="All Pets have been adopted!"
+        />
+      </aside>
+    );
   }
 
-  render(){
-    if(this.props.loading) {
-      return <h2>Finding your purrrrfect pet</h2>
-    } else {
-      return this.rerender();
-    }
-  }
+  return (
+    <section className="pet">
+      {displayPet}
+    </section>
+  );
 }
-
-const mapStateToProps = (state, props) => {
-  return({
-  type: props.type,
-  cat: state.cat,
-  dog: state.dog,
-  loading: (props.type === 'cat') ? state.cat.loading : state.dog.loading
-  })
-}
-
-export default connect(mapStateToProps)(Pets);
