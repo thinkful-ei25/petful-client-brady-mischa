@@ -23,7 +23,7 @@ export default function Pet(props) {
   };
   
   const displayPet = props.petToAdopt ? (
-    <section className="pet">
+    <div>
       <header>
         <h3 className="pet-name">
           {options[props.type].greeting}
@@ -54,7 +54,7 @@ export default function Pet(props) {
       <button type="button" id={props.type + '-btn'} onClick={props.onAdopt}>
         Adopt
       </button>
-    </section>
+    </div>
   ) : (
     <aside className="no-pet">
       <header>
@@ -69,5 +69,5 @@ export default function Pet(props) {
     </aside>
   );
 
-  return <section className="pet">{displayPet}</section>;
+  return <div className="pet">{displayPet}</div>;
 }
