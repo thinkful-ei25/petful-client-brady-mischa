@@ -94,13 +94,23 @@ h1,.h1,.h2,h1,h2 {
     font-size: 30px;
 }
 
+hr {
+    border-top: 3px solid #0A93EB;
+    margin: 50px auto;
+    max-width: 600px;
+    box-sizing: initial;
+    height: 0;
+    overflow: visible;
+}
+
 .row {
     display: -ms-flexbox;
     display: flex;
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
     margin-right: 1.16rem;
-    margin-left: 1.16rem
+    margin-left: 1.16rem;
+    margin-top: 2rem;
 }
 
 .col-6 {
@@ -133,13 +143,141 @@ h1,.h1,.h2,h1,h2 {
 @media (min-width: 1200px) {
 
     .col-6 {
-        -ms-flex: 0 0 33.333333%;
-        flex: 0 0 33.333333%;
-        max-width: 33.333333%
+        -ms-flex: 0 0 48.333333%;
+        flex: 0 0 58.333333%;
+        max-width: 48.333333%
     }
 
 }
 
+.layout {
+  overflow-x: hidden;
+  box-sizing: border-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -ms-flex: auto;
+  flex: auto;
+}
+
+.layout-content {
+  height: 100%;
+  flex: auto;
+  -ms-flex: auto;
+}
+
+.main-content {
+  padding: 2.3em;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+
+
+.leaderBoardCard {
+  position: relative;
+}
+
+.card {
+  margin-bottom: 2.3em;
+  border-radius: 7px;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  min-width: 0;
+  max-width: 500px;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.cardPet {
+  margin-bottom: 2.3em;
+  border-radius: 7px;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  min-width: 0;
+  max-width: 500px;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  padding-bottom: 25px;
+}
+
+
+.withShadow {
+  -webkit-box-shadow: 3px 3px 42px -5px rgba(0, 170, 228, 0.33);
+  -moz-box-shadow: 3px 3px 42px -5px rgba(0, 170, 228, 0.33);
+  box-shadow: 3px 3px 42px -5px rgba(0, 170, 228, 0.33);
+}
+
+.pet-details {
+    margin: 20px 40px;
+}
+
+
+span {
+  text-align: left;
+  color: #005B8F;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.section-title {
+  text-transform: uppercase;
+  font-size: 1.35rem;
+  color: #0e0b20;
+  margin-bottom: 1em!important;
+  line-height: 1.7;
+}
+
+.animal-details {
+  color: #005B8F;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 22px;
+  padding-bottom: 10px;
+}
+
+.details {
+    margin-inline-start: 20px;
+    padding: 2px;
+}
+
+
+.button {
+  line-height: 1.5;
+  display: inline-block;
+  font-weight: 400;
+  text-align: center;
+  cursor: pointer;
+  border: 1px solid transparent;
+  padding: 0 15px;
+  font-size: 13px;
+  border-radius: 4px;
+  height: 34px;
+  color: rgb(255,255,255);
+  background-color: #0A93EB;
+  border-color: #e4e9f0;
+
+}
+
+.button:hover {
+  color: #0A93EB;
+background-color: #ffffff;
+  border-color: #e4e9f0;
+}
+
+header {
+    padding: 0 40px;
+
+}
 
 
 

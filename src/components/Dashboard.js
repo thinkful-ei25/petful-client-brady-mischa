@@ -11,10 +11,10 @@ export class Dashboard extends Component {
 
   render() {
     return (
-      <Fragment>
+      <div>
+        <hr />
         <div className="row">
           <div className="col-6">
-            <h2>Checkout Our Dogs!</h2>
             <Pet
               className="adopt-pet"
               type="dog"
@@ -24,7 +24,6 @@ export class Dashboard extends Component {
             />
           </div>
           <div className="col-6">
-            <h2>Adopt a Friendly Cat</h2>
             <Pet
               className="adopt-pet"
               type="cat"
@@ -34,7 +33,7 @@ export class Dashboard extends Component {
             />
           </div>
         </div>
-      </Fragment>
+      </div>
     );
   }
 }

@@ -1,42 +1,43 @@
 import React from 'react';
 import SmoothImage from 'react-smooth-image';
-const imgStyles = { height: '200px' };
+const imgStyles = { height: '100%', width: '100%' };
 const styles = {
-  width: '400px',
-  height: '200px',
+  width: '100%',
+  height: '250px',
   overflow: 'inherhit',
-  paddingBottom: '5px'
+  paddingBottom: '5px',
+  position: 'relative'
 };
 
 export default function Pet(props) {
   const options = {
     dog: {
       greeting: 'Howdy! My name is ',
-      allGoneImage:
-        'https://www.rover.com/blog/wp-content/uploads/2015/06/happy-dog.jpg'
+      allGoneImage: 'https://media.giphy.com/media/yCgahYUO90Xbq/giphy.gif'
     },
     cat: {
       greeting: 'Hey There! My name is ',
-      allGoneImage:
-        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhFFYpB2rUY4u91QXpUqQPodZ5K4NWge6GHOlRLqqMJzybHAi2'
+      allGoneImage: 'https://media.giphy.com/media/uI1wAzSiJN3Rm/giphy.gif'
     }
   };
-  
+
   const displayPet = props.petToAdopt ? (
-    <div>
+    <div className="card withShadow leaderBoardCard">
       <header>
-        <h3 className="pet-name">
+        <h3 className="section-title">
           {options[props.type].greeting}
           {props.petToAdopt.name}!
         </h3>
       </header>
-      <SmoothImage
-        src={props.petToAdopt.imageURL}
-        alt={props.petToAdopt.imageDescription}
-        imageStyles={imgStyles}
-        containerStyles={styles}
-      />
-      <dl>
+      <div className="image">
+        <SmoothImage
+          src={props.petToAdopt.imageURL}
+          alt={props.petToAdopt.imageDescription}
+          imageStyles={imgStyles}
+          containerStyles={styles}
+        />
+      </div>
+      <dl className="pet-details">
         <dt className="animal-details">Facts About Me</dt>
         <dd className="details">
           <span>Breed: </span> {props.petToAdopt.breed}
@@ -51,22 +52,31 @@ export default function Pet(props) {
           <span>My Story: </span> {props.petToAdopt.story}
         </dd>
       </dl>
-      <button type="button" id={props.type + '-btn'} onClick={props.onAdopt}>
-        Adopt
+      <button
+        type="button"
+        id={props.type + '-btn'}
+        className="button"
+        onClick={props.onAdopt}
+      >
+        Adopt Me!
       </button>
     </div>
   ) : (
-    <aside className="no-pet">
-      <header>
-        <h2 className="pet-name">All {props.type}s Have Found a Home!</h2>
-      </header>
-      <SmoothImage
-        src={options[props.type].allGoneImage}
-        alt="All Pets have been adopted!"
-        imageStyles={imgStyles}
-        containerStyles={styles}
-      />
-    </aside>
+    <div className="cardPet withShadow leaderBoardCard">
+      <aside className="no-pet">
+        <header>
+          <h3 className="section-title">
+            All {props.type}s Have Found a Home!
+          </h3>
+        </header>
+        <SmoothImage
+          src={options[props.type].allGoneImage}
+          alt="All Pets have been adopted!"
+          imageStyles={imgStyles}
+          containerStyles={styles}
+        />
+      </aside>
+    </div>
   );
 
   return <div className="pet">{displayPet}</div>;
