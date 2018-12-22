@@ -3,7 +3,7 @@ import SmoothImage from 'react-smooth-image';
 const imgStyles = { height: '100%', width: '100%' };
 const styles = {
   width: '100%',
-  height: '250px',
+  height: '300px',
   overflow: 'inherhit',
   paddingBottom: '5px',
   position: 'relative'
@@ -41,6 +41,7 @@ export default function Pet(props) {
       </div>
       <dl className="pet-details">
         <dt className="animal-details">Facts About Me</dt>
+        <hr className="small"/>
         <dd className="details">
           <span>Breed: </span> {props.petToAdopt.breed}
         </dd>
